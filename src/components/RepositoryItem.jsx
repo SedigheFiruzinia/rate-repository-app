@@ -1,42 +1,29 @@
-import { View, StyleSheet } from "react-native";
-import Text from "./Text";
+import { Card } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import CardBody from "./CardBody";
+import CardHeader from "./CardHeader";
 
-const styles = StyleSheet.create({
-  item: {
-    fontSize: 32,
+const cardStyles = StyleSheet.create({
+  container: {
+    backgroundColor: "white",
   },
 });
 
-const Item = ({
-  fullName,
-  description,
-  language,
-  stars,
-  forks,
-  reviews,
-  rating,
-}) => (
-  <View style={styles.item}>
-    <Text fontWeight="bold">full name: {fullName}</Text>
-    <Text>description: {description}</Text>
-    <Text>language: {language}</Text>
-    <Text>stars: {stars}</Text>
-    <Text>forks: {forks}</Text>
-    <Text>reviews: {reviews}</Text>
-    <Text>rating: {rating}</Text>
-  </View>
-);
-
 const RepositoryItem = ({ item }) => (
-  <Item
-    fullName={item.fullName}
-    description={item.description}
-    language={item.language}
-    stars={item.stargazersCount}
-    forks={item.forksCount}
-    reviews={item.reviewCount}
-    rating={item.ratingAverage}
-  />
+  <Card style={cardStyles.container}>
+    <CardHeader
+      image={item.ownerAvatarUrl}
+      description={item.description}
+      fullName={item.fullName}
+      language={item.language}
+    />
+    <CardBody
+      stars={item.stargazersCount}
+      forks={item.forksCount}
+      reviews={item.reviewCount}
+      rating={item.ratingAverage}
+    />
+  </Card>
 );
 
 export default RepositoryItem;
