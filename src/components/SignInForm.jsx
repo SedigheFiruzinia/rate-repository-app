@@ -10,10 +10,6 @@ const styles = StyleSheet.create({
     paddingVertical: 100,
     backgroundColor: "#ecf0f1",
   },
-  pressableContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
   pressable: {
     textAlign: "center",
   },
@@ -29,16 +25,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignInForm = ({ onSubmit }) => {
+const SignInForm = ({ onSubmit, errors }) => {
+  const checkerror = () => {
+    if (!errors.username || !errors.password) onSubmit();
+  };
+
   return (
     <View style={styles.container}>
       <FormikTextInput name="Username" placeholder="Username" />
       <FormikTextInput name="Password" placeholder="Password" />
-      <View style={styles.pressablecontainer}>
-        <Pressable onPress={onSubmit} style={styles.pressable}>
-          <Text style={styles.button}>sign in</Text>
-        </Pressable>
-      </View>
+
+      <Pressable onPress={checkerror} style={styles.pressable}>
+        <Text style={styles.button}>sign in</Text>
+      </Pressable>
     </View>
   );
 };
