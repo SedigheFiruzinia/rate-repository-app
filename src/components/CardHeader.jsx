@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, Button } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Text from "./Text";
 import theme from "../theme";
 
@@ -27,6 +27,14 @@ const cardHeaderStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  button: {
+    marginTop: 10,
+    padding: 5,
+    backgroundColor: theme.colors.primary,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: theme.colors.primary,
+  },
 });
 
 const CardHeader = ({ image, description, fullName, language }) => {
@@ -39,7 +47,9 @@ const CardHeader = ({ image, description, fullName, language }) => {
         <Text style={cardHeaderStyles.infoContainer}>{fullName}</Text>
         <Text color="textSecondary">{description}</Text>
         <View style={cardHeaderStyles.buttonContainer}>
-          <Button title={language} />
+          <TouchableOpacity style={cardHeaderStyles.button}>
+            <Text style={{ color: "white" }}>{language}</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
